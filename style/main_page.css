@@ -1,0 +1,10 @@
+.main-section {
+    /*padding: 0 13.33vw 0 13.33vw;*/
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+.main-section nav{
+    padding:  10px;
+}
