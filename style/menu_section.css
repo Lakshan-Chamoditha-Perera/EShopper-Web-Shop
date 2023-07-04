@@ -1,3 +1,8 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
 #menu-section {
     /*background-color: #F5F5F5;*/
     /*border: 2px solid red;*/
@@ -71,6 +76,7 @@
     text-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
     color: black;
     font-size: 30px;
+    cursor: pointer;
 }
 
 
@@ -87,13 +93,14 @@
 }
 
 .customer-section {
-    background-color: #FDFDFD;
-    margin: 50px 13.33vw 0 13.33vw;
     position: relative;
-    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background-color: #FDFDFD;
+    padding-top: 4%;
+    margin: 0 13.33vw 0 13.33vw;
+    height: 90vh;
 }
 
 .container {

@@ -23,16 +23,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+                    <a class="nav-link" id="home" onclick="navigate('home')">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Customer</a>
+                    <a class="nav-link" onclick=navigate('manage_customer')>Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Item</a>
+                    <a class="nav-link" onclick=navigate('manage_item')>Item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Orders</a>
+                    <a class="nav-link">Orders</a>
                 </li>
 
             </ul>
@@ -42,10 +42,10 @@
 <section id="menu-section">
     <div class="left_container">
         <div id="title">EShopper
-        <p></p>
+            <p></p>
         </div>
         <div>
-            <img src="assets/images/shop.png" alt="shop">
+            <img alt="shop" src="assets/images/shop.png">
         </div>
         <p></p>
     </div>
@@ -53,25 +53,24 @@
         <div class="btnList">
             <div id="customer">
                 Customer
-            <img src="assets/images/customer.png">
-
+                <img alt="customer" src="assets/images/customer.png">
             </div>
             <div id="item">Item
-                <img src="assets/images/item.png"></div>
+                <img alt="item" src="assets/images/item.png"></div>
             <div id="order">Order
-                <img src="assets/images/orders.png">
+                <img alt="order" src="assets/images/orders.png">
             </div>
         </div>
     </div>
 </section>
-<section class="customer-section" id = "manage_customer">
+<section class="customer-section" id="manage_customer">
     <h1 class="title">
         Customers
     </h1>
     <div class="container">
         <div class="left_sub_container">
             <h1> Manage Customer Form</h1>
-            <form id="customer_form" class="description_form">
+            <form class="description_form" id="customer_form">
                 <div class="form-group">
                     <label for="txt_customer_id">Customer ID</label>
                     <input class="form-control" id="txt_customer_id" name='customerId' placeholder="C001" required
@@ -121,14 +120,14 @@
         </div>
     </div>
 </section>
-<section class="customer-section" id = "manage_item">
+<section class="customer-section" id="manage_item">
     <h1 class="title">
         Item
     </h1>
     <div class="container">
         <div class="left_sub_container">
             <h1> Manage Item Form</h1>
-            <form id="item_form" class="description_form">
+            <form class="description_form" id="item_form">
                 <div class="form-group">
                     <label for="txt_item_id">Item ID</label>
                     <input class="form-control" id="txt_item_id" name='item_id' placeholder="I001" required
@@ -180,15 +179,16 @@
 </section>
 
 <script src="assets/jquery/jquery-3.6.4.min.js"></script>
+<script src="controller/MainFormController.js"></script>
 <script>
-    let form = document.getElementById('customer_form');
+    navigate('home');
+    /*let form = document.getElementById('customer_form');
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         let name = form.elements['customerName'].value;
         console.log(name);
         form.reset();
-    })
-
+    })*/
 </script>
 </body>
 </html>
