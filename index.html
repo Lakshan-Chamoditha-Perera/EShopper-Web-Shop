@@ -70,6 +70,7 @@
     <h1 class="title">
         Customers
     </h1>
+    <hr style="color: black; border: 1px solid black; width: 100%">
     <div class="container">
         <div class="left_sub_container">
             <h1> Manage Customer Form</h1>
@@ -82,7 +83,7 @@
                 <div class="form-group">
                     <label for="txt_customer_name">Name</label>
                     <input class="form-control" id="txt_customer_name" name='customerName'
-                           placeholder="Lakshan Chamoditha" required type="text">
+                           placeholder="Lakshan Chamoditha Perera" required type="text">
                 </div>
                 <div class="form-group">
                     <label for="txt_customer_address">Address</label>
@@ -183,15 +184,8 @@
 
 <script src="assets/jquery/jquery-3.6.4.min.js"></script>
 <script src="controller/MainFormController.js"></script>
-<script>
-    navigate('home');
-    /*let form = document.getElementById('customer_form');
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        let name = form.elements['customerName'].value;
-        console.log(name);
-        form.reset();
-    })*/
+<script type="module" src="controller/CustomerController.js">
+
 </script>
 </body>
 </html>
