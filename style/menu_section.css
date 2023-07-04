@@ -1,8 +1,9 @@
 #menu-section {
-    background-color: #F5F5F5;
-    /*border: 2px solid red;*/
-    padding: 0 13.33vw 50px 13.33vw;
-    height: 90vh;
+    /*background-color: #F5F5F5;*/
+    border: 2px solid red;
+
+    padding: 10vh 13.33vw 50px 13.33vw;
+    height: 95vh;
     width: 100vw;
     top: 60px;
     position: relative;
@@ -10,22 +11,35 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    margin: 0 0 10vh 0;
+
+    background: url("../assets/images/4853433.jpg");
+    /*background-image: ;*/
 }
 
 .left_container {
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
-    /*border: 2px solid blue;*/
-    height: 80%;
-    width: 70%;
+    /* border: 2px solid blue; */
+    height: 89%;
+    width: 75%;
     position: relative;
-    border-top-right-radius: 100px;
-    border-bottom-left-radius: 100px;
+    border-radius: 125px;
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+.left_container img {
+    padding: 0;
+    height: 115%;
+    border-radius: 20px;
 }
 
 .right_container {
-    border: 1px solid gold;
-    height: 100%;
+    /*border: 1px solid gold;*/
+    height: 90%;
     width: 20%;
     position: relative;
     display: flex;
@@ -36,8 +50,8 @@
 
 .right_container .btnList {
     width: 100%;
-    height: 80%;
-    border: 2px solid black;
+    height: 100%;
+    /*border: 2px solid black;*/
     display: flex;
     justify-content: space-around;
     flex-direction: column;
@@ -45,16 +59,31 @@
 }
 
 .btnList div {
-    width: 300px;
-    height: 200px;
-    border: 2px solid black;
-    border-radius: 10px;
+    background-color: white;
+    box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+    width: 248px;
+    height: 211px;
+    /* border: 2px solid black; */
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+    color: black;
+    font-size: 30px;
 }
 
+
+.right_container img {
+    height: 77%;
+}
 
 #title {
     font-size: 150px;
     color: #000000;
+
+    text-shadow: 2px 10px 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .customer-section {
@@ -89,7 +118,7 @@
     font-size: 19px;
     align-self: center;
     border: 2px solid black;
-    width:35%;
+    width: 35%;
     height: 95%;
     display: flex;
     flex-direction: column;
@@ -152,9 +181,10 @@ table {
     align-self: end;
 }
 
-#btn_delete_customer, #item_delete{
+#btn_delete_customer, #item_delete {
     background-color: #E90064;
 }
-#btn_update_customer, #item_update{
+
+#btn_update_customer, #item_update {
     background-color: forestgreen;
 }
