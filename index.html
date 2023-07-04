@@ -42,6 +42,9 @@
 <section id="menu-section">
     <div class="left_container">
         <div id="title">EShopper</div>
+        <div>
+            <img src="">
+        </div>
         <p></p>
     </div>
     <div class="right_container">
@@ -52,40 +55,48 @@
         </div>
     </div>
 </section>
-<section class="customer-section">
+<section class="customer-section" id = "manage_customer">
     <h1 class="title">
         Customers
     </h1>
     <div class="container">
-        <div id="customer_left_container">
+        <div class="left_sub_container">
             <h1> Manage Customer Form</h1>
-            <hr>
-            <form id="customer_form">
+            <form id="customer_form" class="description_form">
                 <div class="form-group">
                     <label for="txt_customer_id">Customer ID</label>
-                    <input class="form-control" id="txt_customer_id" placeholder="C001" type="text">
+                    <input class="form-control" id="txt_customer_id" name='customerId' placeholder="C001" required
+                           type="text">
                 </div>
                 <div class="form-group">
                     <label for="txt_customer_name">Name</label>
-                    <input class="form-control" id="txt_customer_name" placeholder="Lakshan Chamoditha" type="text">
+                    <input class="form-control" id="txt_customer_name" name='customerName'
+                           placeholder="Lakshan Chamoditha" required type="text">
                 </div>
                 <div class="form-group">
                     <label for="txt_customer_address">Address</label>
-                    <input class="form-control" id="txt_customer_address" placeholder="Panadura" type="text">
+                    <input class="form-control" id="txt_customer_address" name='customerAddress' placeholder="Panadura"
+                           required type="text">
                 </div>
                 <div class="form-group">
                     <label for="txt_customer_salary">Salary</label>
-                    <input class="form-control" id="txt_customer_salary" placeholder="25000.00" type="text">
+                    <input class="form-control" id="txt_customer_salary" name='customrSalary' placeholder="25000.00"
+                           required type="text">
                 </div>
-
+                <div class="form-group">
+                    <button class="btn btn-primary" id="btn_save_customer" type="submit">Save</button>
+                    <button class="btn btn-primary" id="btn_update_customer">Update</button>
+                    <button class="btn btn-primary" id="btn_delete_customer">Delete</button>
+                </div>
             </form>
-            <div class="btn_div">
-                <button class="btn btn-primary" id="btn_save_customer" type="submit">Add</button>
-                <button class="btn btn-primary" id="btn_update_customer" type="submit">Update</button>
-                <button class="btn btn-primary" id="btn_delete_customer" type="submit">Delete</button>
-            </div>
+
         </div>
-        <div id="customer_right_container">
+        <div class="right_sub_container">
+            <div class="search_section">
+                <label for="search_customer"></label>
+                <input class="form-control" id="search_customer" name='search' placeholder="C001"
+                       required type="text">
+            </div>
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -101,51 +112,55 @@
         </div>
     </div>
 </section>
-<section class="customer-section">
+<section class="customer-section" id = "manage_item">
     <h1 class="title">
-       Items
+        Item
     </h1>
     <div class="container">
-        <div id=>
+        <div class="left_sub_container">
             <h1> Manage Item Form</h1>
-            <hr>
-            <form id="item_form">
+            <form id="item_form" class="description_form">
                 <div class="form-group">
-                    <label for="txt_customer_id">Customer ID</label>
-                    <input class="form-control" id="txt_item_id" placeholder="I001" type="text">
+                    <label for="txt_item_id">Item ID</label>
+                    <input class="form-control" id="txt_item_id" name='item_id' placeholder="I001" required
+                           type="text">
                 </div>
                 <div class="form-group">
-                    <label for="txt_item_name">Name</label>
-                    <input class="form-control" id="txt_item_name" placeholder="" type="text">
+                    <label for="item_description">Item Description</label>
+                    <input class="form-control" id="item_description" name='item_description'
+                           placeholder="Rice" required type="text">
                 </div>
                 <div class="form-group">
-                    <label for="txt_item_description">Description</label>
-                    <input class="form-control" id="txt_item_description" placeholder="Rice 1kg" type="text">
+                    <label for="item_price">Price</label>
+                    <input class="form-control" id="item_price" name='item_price' placeholder="1250.00"
+                           required type="number">
                 </div>
                 <div class="form-group">
-                    <label for="txt_item_price">Price</label>
-                    <input class="form-control" id="txt_item_price" placeholder="250.00" type="text">
+                    <label for="item_qty">Qty on Hand</label>
+                    <input class="form-control" id="item_qty" name='item_qty' placeholder="100"
+                           required type="number">
                 </div>
                 <div class="form-group">
-                    <label for="txt_item_qty">Qty</label>
-                    <input class="form-control" id="txt_item_qty" placeholder="5" type="text">
+                    <button class="btn btn-primary" id="item_save" type="submit">Save</button>
+                    <button class="btn btn-primary" id="item_update">Update</button>
+                    <button class="btn btn-primary" id="item_delete">Delete</button>
                 </div>
-
             </form>
-            <div class="btn_div">
-                <button class="btn btn-primary" id="btn_save_item" type="submit">Add</button>
-                <button class="btn btn-primary" id="btn_update_item" type="submit">Update</button>
-                <button class="btn btn-primary" id="btn_delete_item" type="submit">Delete</button>
-            </div>
+
         </div>
-        <div >
+        <div class="right_sub_container">
+            <div class="search_section">
+                <label for="search_item"></label>
+                <input class="form-control" id="search_item" name='search' placeholder="I001"
+                       required type="text">
+            </div>
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Salary</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qty on hand</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -157,6 +172,14 @@
 
 <script src="assets/jquery/jquery-3.6.4.min.js"></script>
 <script>
+    let form = document.getElementById('customer_form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let name = form.elements['customerName'].value;
+        console.log(name);
+        form.reset();
+    })
+
 </script>
 </body>
 </html>
