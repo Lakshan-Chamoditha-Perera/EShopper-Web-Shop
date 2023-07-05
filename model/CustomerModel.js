@@ -9,10 +9,10 @@ export function save_customer(customer) {
 }
 
 export function update_customer(customer) {
-    var index = customerList.findIndex(c => c.id === customer.id);
+    let index = customerList.findIndex(c => c.id === customer.id);
     if (index === -1) {
         // Customer does not exist in the list
-        return flase;
+        return false;
     } else {
         // Customer exists in the list, update the customer details
         customerList[index].name = customer.name;
@@ -23,13 +23,22 @@ export function update_customer(customer) {
 }
 
 export function view_customer(customer) {
+    let index = customerList.findIndex(c => c.id === customer.id)
+    if (index!==-1) {
+        // Customer exists in the list & return the customer
+        return customerList[index];
+    }
+    // Customer does not exist in the list
+    return null;
 }
 
 export function delete_customer(customer) {
-    var index = customerList.findIndex(c => c.id === customer.id)
+    let index = customerList.findIndex(c => c.id === customer.id)
     if (index!==-1) {
+        // Customer exists in the list & delete the customer
         customerList.splice(index, 1);
         return true;
     }
+    // Customer does not exist in the list
     return false;
 }
