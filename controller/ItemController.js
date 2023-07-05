@@ -121,3 +121,9 @@ function validateId() {
     if (!flag) alert('Error: Invalid item code!');
     return flag;
 }
+
+
+$('#clear_item').on('click',(e) => {
+    e.preventDefault();
+    load();
+});
