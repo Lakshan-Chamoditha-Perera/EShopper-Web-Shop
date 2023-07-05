@@ -1,0 +1,23 @@
+#manage_item{
+    position: relative;
+    background-color:#F6F6F6 ;!important
+}
+
+.circle1{
+    opacity: 10%;
+    filter: blur(50px);
+    -webkit-filter: blur(15px);
+    height: 200px;
+    width: 200px;
+    border-bottom-right-radius: 1000px;
+    position: absolute;
+    background-color: #E1AEFF;
+    top: 0;
+    left: 0;
+    margin: auto;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 0 50px rgba(0, 0, 0, 0.1) inset;
+}
+
+#manage_item h1{
+    color: #0d6efd;
+}

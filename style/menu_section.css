@@ -99,7 +99,7 @@ body {
     justify-content: flex-start;
     /*background-color: #FDFDFD;*/
     top: 92px;
-    padding-top: 0%;
+    padding-top: 0;
     margin: 0 10.33vw 0 10.33vw;
     height: 87vh;
     border-radius: 32px;
@@ -136,11 +136,11 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    box-shadow: 0px 0px 17px rgba(0, 99, 1717, 0.5);
+    box-shadow: 0 0 17px rgba(0, 99, 1717, 0.5);
     background-color: white;
 }
 
-.left_sub_container h1 {
+.left_sub_container h2 {
     font-size: 35px;
 }
 
@@ -166,9 +166,9 @@ body {
 }
 
 .right_sub_container {
-    box-shadow: 0px 0px 17px rgba(0, 99, 1717, 0.5);
+    box-shadow: 0 0 17px rgba(0, 99, 1717, 0.5);
     background-color: white;
-    padding: 0px 0px 0px 0px;
+    padding: 0;
     border-radius: 24px;
     font-size: 20px;
     align-self: center;
@@ -211,3 +211,7 @@ table {
  .clear{
      width: 15%;
  }
+
+
+
+
