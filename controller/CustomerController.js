@@ -1,12 +1,12 @@
 import {Customer} from "../dto/Customer.js" ;
 import {customerList} from "../db/database.js";
-import {save_customer, update_customer} from "../model/CustomerModel.js";
+import {delete_customer, save_customer, update_customer} from "../model/CustomerModel.js";
 
 const customer_id_pattern = /^C(0[0-9]{2}|[1-9][0-9]{2}|9[0-8][0-9])$/;
 const name_pattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
 const salary_pattern = /^[0-9]+(?:\.[0-9]{1,2})?$/;
 
-let validate = function customer_validate() {
+const validate = function customer_validate() {
     if (customer_id_pattern.test($('#txt_customer_id').val())) {
         if (name_pattern.test($('#txt_customer_name').val())) {
             if (salary_pattern.test($('#txt_customer_salary').val())) {
@@ -22,7 +22,7 @@ let validate = function customer_validate() {
     }
     return false;
 }
-let load = function loadTable() {
+const load = function loadTable() {
     let tableBody = document.getElementById("customer_table_body");
     tableBody.innerHTML = "";
     customerList.forEach(function (customer) {
@@ -55,7 +55,7 @@ let load = function loadTable() {
 }
 
 /*save*/
-$('#btn_save_customer').click((e) => {
+$('#btn_save_customer').on('click',(e) => {
     e.preventDefault();
     if (validate()) {
         let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
@@ -67,7 +67,7 @@ $('#btn_save_customer').click((e) => {
 
 
 /*update customer*/
-$(document).ready(function () {
+const tblToForm = $(document).ready(function () {
     $('#customer_tbl tbody').on('click', 'tr', function () {
         // extract the data from the clicked row
         let id = $(this).find('.customer-id').text();
@@ -77,7 +77,6 @@ $(document).ready(function () {
 
         // customer object using the extracted data
         let customer = new Customer(id, name, email, parseFloat(salary));
-
         $('#txt_customer_id').val(customer.id);
         $('#txt_customer_name').val(customer.name);
         $('#txt_customer_address').val(customer.address);
@@ -86,17 +85,24 @@ $(document).ready(function () {
     });
 });
 
-$('#btn_update_customer').click((e) => {
+$('#btn_update_customer').on('click', (e) => {
     e.preventDefault();
     if (validate()) {
-        let customer = new Customer(
-            $('#txt_customer_id').val(),
-            $('#txt_customer_name').val(),
-            $('#txt_customer_address').val(),
-            $('#txt_customer_salary').val()
-        );
+        let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
         let isUpdate = update_customer(customer);
         alert(isUpdate ? 'Customer updated' : 'Customer not exists!');
+        load();
+    }
+});
+
+/*delete customer*/
+$('#btn_delete_customer').on('click', (e) => {
+    e.preventDefault();
+    if (validate()) {
+        let customer = new Customer();
+        customer.id = $('#txt_customer_id').val();
+        let isUpdate = delete_customer(customer);
+        alert(isUpdate ? 'Customer deleted! ' : 'Customer not exists!');
         load();
     }
 });
