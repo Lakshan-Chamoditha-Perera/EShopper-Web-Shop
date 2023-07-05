@@ -1,5 +1,6 @@
 export class Item {
-    constructor(code, description, price, qtyOnHand) {
+    constructor(code, description, price, qtyOnHand
+    ) {
         this._code = code;
         this._description = description;
         this._price = price;

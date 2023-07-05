@@ -1,6 +1,6 @@
 import {Customer} from "../dto/Customer.js" ;
 import {customerList} from "../db/database.js";
-import {save_customer} from "../model/CustomerModel.js";
+import {save_customer, update_customer} from "../model/CustomerModel.js";
 
 const customer_id_pattern = /^C(0[0-9]{2}|[1-9][0-9]{2}|9[0-8][0-9])$/;
 const name_pattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
@@ -31,25 +31,72 @@ let load = function loadTable() {
         // Create table cells for each customer property
         let idCell = document.createElement("td");
         idCell.textContent = customer.id;
+        idCell.className = 'customer-id';
+
         let nameCell = document.createElement("td");
         nameCell.textContent = customer.name;
+        nameCell.className = 'customer-name';
+
         let addressCell = document.createElement("td");
         addressCell.textContent = customer.address;
+        addressCell.className = 'customer-address';
+
         let salaryCell = document.createElement("td");
         salaryCell.textContent = customer.salary;
+        salaryCell.className = 'customer-salary';
+
         row.appendChild(idCell);
         row.appendChild(nameCell);
         row.appendChild(addressCell);
         row.appendChild(salaryCell);
+
         tableBody.appendChild(row);
     });
 }
+
+/*save*/
 $('#btn_save_customer').click((e) => {
     e.preventDefault();
     if (validate()) {
         let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
         let isSave = save_customer(customer);
         alert(isSave ? 'Customer saved' : 'Customer exists');
+        load();
+    }
+});
+
+
+/*update customer*/
+$(document).ready(function () {
+    $('#customer_tbl tbody').on('click', 'tr', function () {
+        // extract the data from the clicked row
+        let id = $(this).find('.customer-id').text();
+        let name = $(this).find('.customer-name').text();
+        let email = $(this).find('.customer-address').text();
+        let salary = $(this).find('.customer-salary').text();
+
+        // customer object using the extracted data
+        let customer = new Customer(id, name, email, parseFloat(salary));
+
+        $('#txt_customer_id').val(customer.id);
+        $('#txt_customer_name').val(customer.name);
+        $('#txt_customer_address').val(customer.address);
+        $('#txt_customer_salary').val(customer.salary);
+
+    });
+});
+
+$('#btn_update_customer').click((e) => {
+    e.preventDefault();
+    if (validate()) {
+        let customer = new Customer(
+            $('#txt_customer_id').val(),
+            $('#txt_customer_name').val(),
+            $('#txt_customer_address').val(),
+            $('#txt_customer_salary').val()
+        );
+        let isUpdate = update_customer(customer);
+        alert(isUpdate ? 'Customer updated' : 'Customer not exists!');
         load();
     }
 });
