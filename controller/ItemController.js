@@ -1,13 +1,11 @@
 import {Item} from "../dto/Item.js";
-import {save_item, update_item} from "../model/ItemModel.js";
+import {delete_item, save_item, update_item} from "../model/ItemModel.js";
 import {itemList} from "../db/database.js";
-
 
 const item_code_regex = /^I(0[0-9]{2}|[1-9][0-9]{2}|9[0-8][0-9])$/;
 const item_description_regex = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
 const item_price_regex = /^[0-9]+(?:\.[0-9]{1,2})?$/;
 const item_qty_regex = /^-?\d+$/;
-
 
 function item_validate() {
     if (item_code_regex.test($('#item_code').val())) {
@@ -74,7 +72,6 @@ $('#item_save').on('click', (e) => {
 });
 
 /*update*/
-
 $(document).ready(function () {
     $('#item_table_body').on('click', 'tr', function () {
         $('#item_code').val($(this).find('.item-code').text());
@@ -89,6 +86,17 @@ $('#item_update').on('click', (e) => {
         let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
         let isUpdate = update_item(item);
         alert(isUpdate ? 'Item updated' : 'Item does not exist!');
+        load();
+    }
+});
+
+$('#item_delete').on('click', (e) => {
+    e.preventDefault();
+    if (item_validate()) {
+        let item = new Item();
+        item.code = $('#item_code').val();
+        let isUpdate = delete_item(item);
+        alert(isUpdate ? 'Item deleted! ' : 'Item does not exist!');
         load();
     }
 });

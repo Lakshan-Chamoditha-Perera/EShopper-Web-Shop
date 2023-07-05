@@ -22,3 +22,14 @@ export function update_item(item) {
         return true;
     }
 }
+
+
+export function delete_item(item) {
+    let index = itemList.findIndex(i => i.code === item.code);
+    if (index!==-1) {
+        // item exists in the list & delete the customer
+        itemList.splice(index, 1);
+        return true;
+    }
+    return false; // item does not exist in the list
+}
