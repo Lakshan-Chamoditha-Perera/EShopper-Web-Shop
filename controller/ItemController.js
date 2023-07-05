@@ -1,6 +1,6 @@
 import {Item} from "../dto/Item.js";
-import {save_item} from "../model/ItemModel.js";
-import {customerList, itemList} from "../db/database.js";
+import {save_item, update_item} from "../model/ItemModel.js";
+import {itemList} from "../db/database.js";
 
 
 const item_code_regex = /^I(0[0-9]{2}|[1-9][0-9]{2}|9[0-8][0-9])$/;
@@ -66,14 +66,29 @@ const load = function loadTable() {
 $('#item_save').on('click', (e) => {
     e.preventDefault();
     if (item_validate()) {
-        let item = new Item($(
-            '#item_code').val(),
-            $('#item_description').val(),
-            $('#item_price').val(),
-            $('#item_qty').val()
-        );
+        let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
         let isSave = save_item(item);
         alert(isSave ? 'item saved' : 'item exists');
+        load();
+    }
+});
+
+/*update*/
+
+$(document).ready(function () {
+    $('#item_table_body').on('click', 'tr', function () {
+        $('#item_code').val($(this).find('.item-code').text());
+        $('#item_description').val($(this).find('.item-description').text());
+        $('#item_price').val($(this).find('.item-price').text());
+        $('#item_qty').val($(this).find('.item-qty').text());
+    });
+});
+$('#item_update').on('click', (e) => {
+    e.preventDefault();
+    if (item_validate()) {
+        let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
+        let isUpdate = update_item(item);
+        alert(isUpdate ? 'Item updated' : 'Item does not exist!');
         load();
     }
 });
