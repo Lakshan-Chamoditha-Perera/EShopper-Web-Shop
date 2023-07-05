@@ -1,4 +1,4 @@
-import {itemList} from "../db/database.js";
+import {customerList, itemList} from "../db/database.js";
 
 export function save_item(item) {
     if (!itemList.some(i => i.code === item.code)) {
@@ -27,9 +27,20 @@ export function update_item(item) {
 export function delete_item(item) {
     let index = itemList.findIndex(i => i.code === item.code);
     if (index!==-1) {
-        // item exists in the list & delete the customer
+        // item exists in the list & delete the item
         itemList.splice(index, 1);
         return true;
     }
     return false; // item does not exist in the list
+}
+
+
+export function view_item(item) {
+    let index = itemList.findIndex(i =>i.code === item.code);
+    if (index!==-1) {
+        // Item exists in the list & return the item
+        return itemList[index];
+    }
+    // Item does not exist in the list
+    return null;
 }

@@ -1,5 +1,5 @@
 import {Item} from "../dto/Item.js";
-import {delete_item, save_item, update_item} from "../model/ItemModel.js";
+import {delete_item, save_item, update_item, view_item} from "../model/ItemModel.js";
 import {itemList} from "../db/database.js";
 
 const item_code_regex = /^I(0[0-9]{2}|[1-9][0-9]{2}|9[0-8][0-9])$/;
@@ -90,6 +90,7 @@ $('#item_update').on('click', (e) => {
     }
 });
 
+/*delete*/
 $('#item_delete').on('click', (e) => {
     e.preventDefault();
     if (item_validate()) {
@@ -100,3 +101,23 @@ $('#item_delete').on('click', (e) => {
         load();
     }
 });
+
+/*search item*/
+$('#search_item').on('keypress', function (event) {
+    if (event.which === 13 && validateId()) {
+        let item = new Item();
+        item.code = $(this).val();
+        item = view_item(item);
+        if (item != null) {
+            let tableBody = document.getElementById("item_table_body");
+            tableBody.innerHTML = "";
+            appendData(item);
+        } else alert("Item record does not exist!")
+    }
+});
+
+function validateId() {
+    let flag = item_code_regex.test($('#search_item').val());
+    if (!flag) alert('Error: Invalid item code!');
+    return flag;
+}
