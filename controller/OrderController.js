@@ -8,6 +8,14 @@ itemList.forEach(item=>{
 })
 
 
+customerList.forEach(customer=>{
+    let option = document.createElement("option");
+    option.value = JSON.stringify(customer);
+    option.text = customer.name;
+    document.getElementById('cmbCustomers').appendChild(option);
+});
+
+
 
 
 
