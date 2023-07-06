@@ -131,3 +131,4 @@ $('#clear_item').on('click', (e) => {
     e.preventDefault();
     load();
 });
+load();

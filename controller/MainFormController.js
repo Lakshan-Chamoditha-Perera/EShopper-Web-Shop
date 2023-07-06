@@ -1,14 +1,3 @@
-
-/*
- * created by Shan Perera
- * 5/7/2023
- */
-
-/*
- * created by Shan Perera
- * 5/7/2023
- */
-
 function navigate(id) {
     $('#manage_customer').css('display', id == 'manage_customer' ? 'flex' : 'none');
     $('#manage_item').css('display', id == 'manage_item' ? 'flex' : 'none');

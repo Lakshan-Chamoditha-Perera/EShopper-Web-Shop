@@ -131,3 +131,5 @@ $('#clear_customer').on('click',(e) => {
     e.preventDefault();
     load();
 });
+
+load();
