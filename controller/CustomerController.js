@@ -50,7 +50,7 @@ let appendData = (customer) => {
 
     tableBody.appendChild(row);
 }
-const load = function loadTable() {
+const loadTable = function loadTable() {
     let tableBody = document.getElementById("customer_table_body");
     tableBody.innerHTML = "";
     customerList.forEach(customer => appendData(customer));
@@ -63,7 +63,7 @@ $('#btn_save_customer').on('click', (e) => {
         let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
         let isSave = save_customer(customer);
         alert(isSave ? 'Customer saved' : 'Customer exists');
-        load();
+        loadTable();
     }
 });
 
@@ -91,7 +91,7 @@ $('#btn_update_customer').on('click', (e) => {
         let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
         let isUpdate = update_customer(customer);
         alert(isUpdate ? 'Customer updated' : 'Customer not exists!');
-        load();
+        loadTable();
     }
 });
 
@@ -103,7 +103,7 @@ $('#btn_delete_customer').on('click', (e) => {
         customer.id = $('#txt_customer_id').val();
         let isUpdate = delete_customer(customer);
         alert(isUpdate ? 'Customer deleted! ' : 'Customer not exists!');
-        load();
+        loadTable();
     }
 });
 
@@ -127,9 +127,10 @@ function validateId() {
     return flag;
 }
 
-$('#clear_customer').on('click',(e) => {
+$('#clear_customer').on('click', (e) => {
     e.preventDefault();
-    load();
+    loadTable();
 });
 
-load();
+loadTable();
+

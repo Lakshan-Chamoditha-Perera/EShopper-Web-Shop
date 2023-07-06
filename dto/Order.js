@@ -1,8 +1,9 @@
 export class Order {
-    constructor(order_id, customer_id, date) {
+    constructor(order_id, customer_id, date, total) {
         this._order_id = order_id;
         this._customer_id = customer_id;
         this._date = date;
+        this._total = total;
     }
 
     get order_id() {
@@ -27,5 +28,13 @@ export class Order {
 
     set date(value) {
         this._date = value;
+    }
+
+    get total() {
+        return this._total;
+    }
+
+    set total(value) {
+        this._total = value;
     }
 }

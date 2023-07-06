@@ -18,7 +18,10 @@ body {
     justify-content: space-around;
     margin: 0 0 10vh 0;
 
-    background: url("../assets/images/4853433.jpg");
+    /*background: url("../assets/images/Screenshot from 2023-07-06 12-12-57.png");*/
+    /*background-repeat: round;*/
+    /*background-blend-mode: darken;*/
+    /*background-attachment: fixed;*/
     /*background-image: ;*/
 }
 

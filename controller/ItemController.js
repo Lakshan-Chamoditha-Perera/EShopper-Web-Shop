@@ -61,7 +61,7 @@ let appendData = (item) => {
     tableBody.appendChild(row);
 }
 /*save*/
-const load = function loadTable() {
+const loadTable = function loadTable() {
     let tableBody = document.getElementById("item_table_body");
     tableBody.innerHTML = "";
     itemList.forEach(item => appendData(item));
@@ -72,7 +72,7 @@ $('#item_save').on('click', (e) => {
         let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
         let isSave = save_item(item);
         alert(isSave ? 'item saved' : 'item exists');
-        load();
+        loadTable();
     }
 });
 
@@ -91,7 +91,7 @@ $('#item_update').on('click', (e) => {
         let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
         let isUpdate = update_item(item);
         alert(isUpdate ? 'Item updated' : 'Item does not exist!');
-        load();
+        loadTable();
     }
 });
 
@@ -103,7 +103,7 @@ $('#item_delete').on('click', (e) => {
         item.code = $('#item_code').val();
         let isUpdate = delete_item(item);
         alert(isUpdate ? 'Item deleted! ' : 'Item does not exist!');
-        load();
+        loadTable();
     }
 });
 
@@ -129,6 +129,6 @@ function validateId() {
 
 $('#clear_item').on('click', (e) => {
     e.preventDefault();
-    load();
+    loadTable();
 });
-load();
+loadTable();
