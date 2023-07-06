@@ -1,3 +1,8 @@
+/*
+ * created by Shan Perera
+ * 5/7/2023
+ */
+
 import {Item} from "../dto/Item.js";
 import {delete_item, save_item, update_item, view_item} from "../model/ItemModel.js";
 import {itemList} from "../db/database.js";
@@ -122,8 +127,7 @@ function validateId() {
     return flag;
 }
 
-
-$('#clear_item').on('click',(e) => {
+$('#clear_item').on('click', (e) => {
     e.preventDefault();
     load();
 });

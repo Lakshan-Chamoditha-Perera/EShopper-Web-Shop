@@ -26,7 +26,7 @@ export function update_item(item) {
 
 export function delete_item(item) {
     let index = itemList.findIndex(i => i.code === item.code);
-    if (index!==-1) {
+    if (index !== -1) {
         // item exists in the list & delete the item
         itemList.splice(index, 1);
         return true;
@@ -36,8 +36,8 @@ export function delete_item(item) {
 
 
 export function view_item(item) {
-    let index = itemList.findIndex(i =>i.code === item.code);
-    if (index!==-1) {
+    let index = itemList.findIndex(i => i.code === item.code);
+    if (index !== -1) {
         // Item exists in the list & return the item
         return itemList[index];
     }

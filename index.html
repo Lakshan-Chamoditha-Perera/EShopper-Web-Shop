@@ -12,6 +12,7 @@
     <link href="style/main_page.css" rel="stylesheet">
     <link href="style/menu_section.css" rel="stylesheet">
     <link href="style/item_section.css" rel="stylesheet">
+    <link href="style/manage_order.css" rel="stylesheet">
 
 </head>
 <body>
@@ -67,7 +68,7 @@
         </div>
     </div>
 </section>
-<section class="customer-section" id="manage_customer">
+<section class="content-section" id="manage_customer">
     <h1 class="title">
         Customers <i class='bx bx-user-plus'></i>
     </h1>
@@ -128,7 +129,7 @@
         </div>
     </div>
 </section>
-<section class="customer-section" id="manage_item">
+<section class="content-section" id="manage_item">
     <h1 class="title">
         Item <i class='bx bx-cookie'></i>
     </h1>
@@ -190,16 +191,113 @@
         </div>
     </div>
 </section>
+<section class="content-section" id="manage_order">
+    <h1 class="title">
+        Place Order <i class='bx bx-cookie'></i>
+    </h1>
+    <hr style="color: white; border: 1px solid black; width: 100%">
+    <div class="container" id="order_container">
+        <div id="orders_left_container">
+            <h1>New Order</h1>
+            <form>
+                <div class="form-group">
+                    <label for="txt_order_id">Order ID</label>
+                    <input class="form-control" id="txt_order_id" name='order_id' placeholder="O001" required
+                           type="text">
+                </div>
+                <div class="form-group">
+                    <label for="cmbCustomers">Customers</label>
+                    <select class="form-control" id="cmbCustomers">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="customer_name">Name </label>
+                    <h3 class=" " id="customer_name">
+                        Shan Perera
+                    </h3>
+                </div>
+            </form>
+            <img alt="image" src="assets/images/ordernow.png">
+        </div>
+        <div id="orders_right_container">
+            <h5>Date : <span>&nbsp; 2023/07/01</span></h5>
+            <div id="right_container_top">
+                <form>
+                    <div class="form-group">
+                        <label for="cmbItem">Item</label>
+                        <select class="form-control" id="cmbItem">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="i_description">Description</label>
+                        <h4 class="form-control" id="i_description"
+                            type="text">-</h4>
+                    </div>
+                    <div class="form-group">
+                        <label for="i_price">Unit Price</label>
+                        <h4 class="form-control" id="i_price"
+                            type="text">-</h4>
+                    </div>
+                    <div class="form-group">
+                        <label for="i_qtyOnHand">Qty on hand</label>
+                        <h4 class="form-control" id="i_qtyOnHand"
+                            type="text">-</h4>
+
+                    </div>
+
+                </form>
+                <div id="addcart">
+                    <div class="form-group">
+                        <div style="width: 30%;">
+                            <!--                            <label for="qty">Qty on hand</label>-->
+                            <input class="form-control" id="qty"
+                                   placeholder="enter qty" required type="number">
+                        </div>
+                        <div class="form-group" id="btns">
+                            <button class="btn btn-primary" id="btn_addtocart">Cart</button>
+                            <button class="btn btn-primary" id="btn_remove">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="right_container_bottom">
+                <table class="table table-hover" id="cart">
+                    <thead>
+                    <tr>
+                        <th class="order-item-code" scope="col">Item Code</th>
+                        <th class="order-item-description" scope="col">Description</th>
+                        <th class="order-item-qty" scope="col">Qty</th>
+                        <th class="order-item-price" scope="col">Price</th>
+                        <th class="order-item-total" scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="cart_body">
+                    </tbody>
+                </table>
+            </div>
+            <div class="btns">
+                <h2 id="total">total: <span>10000.00</span></h2>
+                <button class="btn btn-primary" id="btn_place_order">Place Order</button>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script src="assets/jquery/jquery-3.6.4.min.js"></script>
 
 <script src="dto/Customer.js" type="module"></script>
 <script src="dto/Item.js" type="module"></script>
-
 <script src="controller/MainFormController.js"></script>
 <script src="controller/CustomerController.js" type="module"></script>
 <script src="controller/ItemController.js" type="module"></script>
 <script src="model/CustomerModel.js" type="module"></script>
+<script src="model/ItemModel.js" type="module"></script>
 
 </body>
 </html>
