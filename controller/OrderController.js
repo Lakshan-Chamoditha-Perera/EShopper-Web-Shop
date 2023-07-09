@@ -1,6 +1,5 @@
-import {customerList, itemList, ordersList} from "../db/database.js";
+import {customerList, itemList} from "../db/database.js";
 import {save_order} from "../model/OrderModel.js";
-import {Order} from "../dto/Order.js";
 
 let btnAdd = document.getElementById("btn_addtocart");
 itemList.forEach(item => {
@@ -62,7 +61,6 @@ let addToCart = (quantity) => {
     let tableBody = document.getElementById("cart_body");
     const cmbItem = document.getElementById("cmbItem");
     const selectedOption = cmbItem.options[cmbItem.selectedIndex];
-
     let item = JSON.parse(selectedOption.value);
     item.qtyOnHand = parseFloat(quantity);
     let index = check(tableBody, item);
@@ -123,16 +121,27 @@ $('#qty').on('keyup', function () {
     if (quantity != 0 && quantity != "" && quantity <= qtyOnHand) {
         btnAdd.style.backgroundColor = '#3E64FF'
     } else {
-        btnAdd.style.backgroundColor = '#E8F6EF'
+        btnAdd.style.backgroundColor = '#EEEEEE'
         alert("Invalid quantity");
         this.value = '';
     }
 });
+
+function clearAll() {
+    $('#txt_order_id').val('');
+    $('#cmbCustomers').val('');
+    $('#i_description').text(' ');
+    $('#i_price').text(' ');
+    $('#i_qtyOnHand').text(' ');
+    $('#total_price').text('0.00');
+    $('#cart_body').empty();
+
+}
+
 $('#btn_place_order').on('click', () => {
     let cartItems = [];
-
     let rows = $('#cart_body tr');
-    if (rows.length !== 0) {
+    if ($('#txt_order_id').val() != null && JSON.parse($('#cmbCustomers').val()) != null && rows.length !== 0) {
         rows.each(function () {
             let cells = $(this).find('td');
             let item = {
@@ -150,9 +159,10 @@ $('#btn_place_order').on('click', () => {
             _total: parseFloat(document.getElementById('total_price').textContent),
             _itemList: cartItems
         };
-        console.log(order)
-        save_order(order);
+        let flag = save_order(order);
+        alert(flag ? "Order Placed! " : "Error: Something went wrong!");
     } else {
-        alert("Cart is empty");
+        alert("Oops something went wrong! Please check entered details");
     }
+    clearAll();
 });
