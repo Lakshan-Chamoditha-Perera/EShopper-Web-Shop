@@ -1,5 +1,7 @@
 #manage_order {
-    border: 2px solid black;
+    /*border: 2px solid black;*/
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+
 }
 
 #order_container {
@@ -9,15 +11,19 @@
 }
 
 #orders_left_container {
-
-    border: 2px solid black;
+    border-radius: 32px;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+    /*border: 1px solid black;*/
     width: 30%;
     left: 10px;
     padding: 10px;
 }
 
 #orders_right_container {
-    border: 2px solid black;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+    /*border: 2px solid black;*/
+
+    border-radius: 32px;
     width: 65%;
     display: flex;
     flex-direction: column;
@@ -28,15 +34,15 @@
 #right_container_top {
     width: 100%;
     height: 26%;
-    border: 2px solid blue;
+    /*border: 1px solid blue;*/
+
 }
 
-
 #right_container_bottom {
-
+border-bottom: 1px solid gray;
     width: 100%;
     height: 50%;
-    border: 2px solid black;
+    /*border: 2px solid black;*/
 }
 
 .btns {
@@ -86,6 +92,7 @@ h5 {
     display: flex;
     flex-direction: row;
     align-self: flex-end;
+    padding-right: 40px;
 }
 
 #btn_addtocart, #btn_remove {;
@@ -112,6 +119,10 @@ h5 {
     width: 45%;
     justify-content: right;
     align-content: space-between;
+}
+
+#right_container_bottom table th{
+    color: #fd7e12;
 }
 
 /*

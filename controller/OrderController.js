@@ -130,12 +130,12 @@ $('#qty').on('keyup', function () {
 function clearAll() {
     $('#txt_order_id').val('');
     $('#cmbCustomers').val('');
-    $('#i_description').text(' ');
-    $('#i_price').text(' ');
-    $('#i_qtyOnHand').text(' ');
+    $('#cmbItem').val('');
+    $('#i_description').text('-');
+    $('#i_price').text('-');
+    $('#i_qtyOnHand').text('-');
     $('#total_price').text('0.00');
     $('#cart_body').empty();
-
 }
 
 $('#btn_place_order').on('click', () => {

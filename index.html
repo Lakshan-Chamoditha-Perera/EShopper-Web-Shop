@@ -5,7 +5,7 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Web Pos</title>
+    <title>E-Shoper Online Store</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -32,7 +32,8 @@
                         Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick=navigate('manage_customer')>Customer</a>
+                    <a class="nav-link" onclick=navigate('manage_customer')>
+                        <i class="bi bi-people"></i>Customer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" onclick=navigate('manage_item')>Item</a>
@@ -192,13 +193,13 @@
     </div>
 </section>
 <section class="content-section" id="manage_order">
-    <h1 class="title">
+    <h1 class="title" >
         Place Order <i class='bx bx-cookie'></i>
     </h1>
     <hr style="color: white; border: 1px solid black; width: 100%">
     <div class="container" id="order_container">
         <div id="orders_left_container">
-            <h1>New Order</h1>
+            <h1 style="color: #FFA41B">New Order</h1>
             <form>
                 <div class="form-group">
                     <label for="txt_order_id">Order ID</label>
@@ -275,7 +276,7 @@
                 </table>
             </div>
             <div class="btns">
-                <h2 id="total">total: <span id="total_price">0.00</span></h2>
+                <h2 id="total">Total:Rs&nbsp;<span id="total_price">0.00</span></h2>
                 <button class="btn btn-primary" id="btn_place_order">Place Order</button>
             </div>
         </div>

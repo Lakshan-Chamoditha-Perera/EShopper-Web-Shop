@@ -1,4 +1,5 @@
 #manage_item{
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
     position: relative;
     background-color:#F6F6F6 ;!important
 }
