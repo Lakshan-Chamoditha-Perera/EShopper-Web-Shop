@@ -1,25 +1,18 @@
 export class Order {
-    constructor(order_id, customer_id, date, total) {
-        this._order_id = order_id;
-        this._customer_id = customer_id;
-        this._date = date;
-        this._total = total;
+    get id() {
+        return this._id;
     }
 
-    get order_id() {
-        return this._order_id;
+    set id(value) {
+        this._id = value;
     }
 
-    set order_id(value) {
-        this._order_id = value;
+    get customer() {
+        return this._customer;
     }
 
-    get customer_id() {
-        return this._customer_id;
-    }
-
-    set customer_id(value) {
-        this._customer_id = value;
+    set customer(value) {
+        this._customer = value;
     }
 
     get date() {
@@ -36,5 +29,20 @@ export class Order {
 
     set total(value) {
         this._total = value;
+    }
+
+    get itemList() {
+        return this._itemList;
+    }
+
+    set itemList(value) {
+        this._itemList = value;
+    }
+    constructor(id, customer, date, total,itemList) {
+        this._id = id;
+        this._customer = customer;
+        this._date = date;
+        this._total = total;
+        this._itemList = itemList;
     }
 }

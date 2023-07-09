@@ -1,5 +1,6 @@
-import {customerList, itemList} from "../db/database.js";
-
+import {customerList, itemList, ordersList} from "../db/database.js";
+import {save_order} from "../model/OrderModel.js";
+import {Order} from "../dto/Order.js";
 
 let btnAdd = document.getElementById("btn_addtocart");
 itemList.forEach(item => {
@@ -8,14 +9,12 @@ itemList.forEach(item => {
     option.text = item.code;
     document.getElementById('cmbItem').appendChild(option);
 })
-
 customerList.forEach(customer => {
     let option = document.createElement("option");
     option.value = JSON.stringify(customer);
-    option.text = customer.name;
+    option.text = customer.id;
     document.getElementById('cmbCustomers').appendChild(option);
 });
-
 $('#cmbCustomers').on('change', function () {
     let selectedOption = this.options[this.selectedIndex];
     let selectedCustomer = JSON.parse(selectedOption.value);
@@ -39,7 +38,6 @@ function calculateTotal() {
         let row = rows[i];
         let totalCell = row.querySelector(".order-item-total");
         let itemTotal = parseFloat(totalCell.textContent);
-
         total += itemTotal;
     }
 
@@ -67,9 +65,7 @@ let addToCart = (quantity) => {
 
     let item = JSON.parse(selectedOption.value);
     item.qtyOnHand = parseFloat(quantity);
-
     let index = check(tableBody, item);
-
     if (index !== -1) {
         let rows = tableBody.getElementsByTagName("tr");
         let qtyOnHandCell = rows[index].querySelector(".order-item-qty");
@@ -82,8 +78,8 @@ let addToCart = (quantity) => {
     }
 
     let row = document.createElement("tr");
-
     let codeCell = document.createElement("td");
+
     codeCell.textContent = item.code;
     codeCell.className = 'order-item-code';
 
@@ -106,12 +102,10 @@ let addToCart = (quantity) => {
     row.appendChild(codeCell);
     row.appendChild(descriptionCell);
     row.appendChild(qtyOnHandCell);
-
     row.appendChild(priceCell);
     row.appendChild(total);
 
     tableBody.appendChild(row);
-
     calculateTotal();
 }
 
@@ -134,4 +128,31 @@ $('#qty').on('keyup', function () {
         this.value = '';
     }
 });
+$('#btn_place_order').on('click', () => {
+    let cartItems = [];
 
+    let rows = $('#cart_body tr');
+    if (rows.length !== 0) {
+        rows.each(function () {
+            let cells = $(this).find('td');
+            let item = {
+                _code: cells.eq(0).text(),
+                _description: cells.eq(1).text(),
+                _qtyOnHand: parseInt(cells.eq(2).text()),
+                _price: parseFloat(cells.eq(3).text())
+            };
+            cartItems.push(item);
+        });
+        let order = {
+            _id: $('#txt_order_id').val(),
+            _customer: JSON.parse($('#cmbCustomers').val()),
+            _date: $('#date').text(),
+            _total: parseFloat(document.getElementById('total_price').textContent),
+            _itemList: cartItems
+        };
+        console.log(order)
+        save_order(order);
+    } else {
+        alert("Cart is empty");
+    }
+});
