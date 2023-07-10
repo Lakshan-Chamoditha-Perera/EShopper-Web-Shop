@@ -1,23 +1,137 @@
 import {customerList, itemList} from "../db/database.js";
 
-itemList.forEach(item=>{
+
+let btnAdd = document.getElementById("btn_addtocart");
+itemList.forEach(item => {
     let option = document.createElement("option");
     option.value = JSON.stringify(item);
-    option.text = item.description;
+    option.text = item.code;
     document.getElementById('cmbItem').appendChild(option);
 })
 
-
-customerList.forEach(customer=>{
+customerList.forEach(customer => {
     let option = document.createElement("option");
     option.value = JSON.stringify(customer);
     option.text = customer.name;
     document.getElementById('cmbCustomers').appendChild(option);
 });
 
+$('#cmbCustomers').on('change', function () {
+    let selectedOption = this.options[this.selectedIndex];
+    let selectedCustomer = JSON.parse(selectedOption.value);
+    $('#customer_name').text(selectedCustomer.name);
+});
 
+$('#cmbItem').on('change', function () {
+    let selectedOption = this.options[this.selectedIndex];
+    let selectedItem = JSON.parse(selectedOption.value);
+    $('#i_description').text(selectedItem.description);
+    $('#i_price').text(selectedItem.price);
+    $('#i_qtyOnHand').text(selectedItem.qtyOnHand);
+});
 
+function calculateTotal() {
+    let tableBody = document.getElementById("cart_body");
+    let rows = tableBody.getElementsByTagName("tr");
+    let total = 0;
 
+    for (let i = 0; i < rows.length; i++) {
+        let row = rows[i];
+        let totalCell = row.querySelector(".order-item-total");
+        let itemTotal = parseFloat(totalCell.textContent);
 
+        total += itemTotal;
+    }
 
+    // Display the total sum in a separate element, if desired
+    let totalSumElement = document.getElementById("total_price");
+    if (totalSumElement) {
+        totalSumElement.textContent = total.toFixed(2);
+    }
+}
+
+function check(tableBody, item) {
+    let rows = tableBody.getElementsByTagName("tr");
+    for (let i = 0; i < rows.length; i++) {
+        let row = rows[i];
+        let cells = row.getElementsByTagName("td");
+        if (cells[0].textContent == item.code) return i;
+    }
+    return -1;
+}
+
+let addToCart = (quantity) => {
+    let tableBody = document.getElementById("cart_body");
+    const cmbItem = document.getElementById("cmbItem");
+    const selectedOption = cmbItem.options[cmbItem.selectedIndex];
+
+    let item = JSON.parse(selectedOption.value);
+    item.qtyOnHand = parseFloat(quantity);
+
+    let index = check(tableBody, item);
+
+    if (index !== -1) {
+        let rows = tableBody.getElementsByTagName("tr");
+        let qtyOnHandCell = rows[index].querySelector(".order-item-qty");
+        let totCell = rows[index].querySelector(".order-item-total");
+        let currentQty = parseFloat(qtyOnHandCell.textContent);
+        qtyOnHandCell.textContent = (currentQty + item.qtyOnHand).toFixed(2);
+        totCell.textContent = parseFloat((qtyOnHandCell.textContent) * item.price).toFixed(2);
+        calculateTotal();
+        return;
+    }
+
+    let row = document.createElement("tr");
+
+    let codeCell = document.createElement("td");
+    codeCell.textContent = item.code;
+    codeCell.className = 'order-item-code';
+
+    let descriptionCell = document.createElement("td");
+    descriptionCell.textContent = item.description;
+    descriptionCell.className = 'order-item-description';
+
+    let priceCell = document.createElement("td");
+    priceCell.textContent = item.price;
+    priceCell.className = 'order-item-price';
+
+    let qtyOnHandCell = document.createElement("td");
+    qtyOnHandCell.textContent = item.qtyOnHand;
+    qtyOnHandCell.className = 'order-item-qty';
+
+    let total = document.createElement("td");
+    total.textContent = (item.qtyOnHand * item.price).toFixed(2);
+    total.className = 'order-item-total';
+
+    row.appendChild(codeCell);
+    row.appendChild(descriptionCell);
+    row.appendChild(qtyOnHandCell);
+
+    row.appendChild(priceCell);
+    row.appendChild(total);
+
+    tableBody.appendChild(row);
+
+    calculateTotal();
+}
+
+$('#btn_addtocart').on('click', () => {
+    let quantity = $('#qty').val();
+    let qtyOnHand = parseFloat($('#i_qtyOnHand').text());
+    if (quantity != 0 && quantity != "" && quantity <= qtyOnHand) {
+        addToCart(quantity);
+    }
+});
+
+$('#qty').on('keyup', function () {
+    let quantity = $(this).val();
+    let qtyOnHand = parseFloat($('#i_qtyOnHand').text());
+    if (quantity != 0 && quantity != "" && quantity <= qtyOnHand) {
+        btnAdd.style.backgroundColor = '#3E64FF'
+    } else {
+        btnAdd.style.backgroundColor = '#E8F6EF'
+        alert("Invalid quantity");
+        this.value = '';
+    }
+});
 
