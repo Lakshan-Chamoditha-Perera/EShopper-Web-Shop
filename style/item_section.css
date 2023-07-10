@@ -1,10 +1,15 @@
-#manage_item{
+#manage_item {
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
     position: relative;
-    background-color:#F6F6F6 ;!important
+    background: url("../assets/images/img3.png");
+    background-repeat: round;
+    background-blend-mode: darken;
+    background-attachment: fixed;
 }
 
-.circle1{
-    opacity: 10%;
+.circle1 {
+    display: none;
+    /*opacity: 10%;
     filter: blur(50px);
     -webkit-filter: blur(15px);
     height: 200px;
@@ -16,8 +21,9 @@
     left: 0;
     margin: auto;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 0 50px rgba(0, 0, 0, 0.1) inset;
+*/
 }
 
-#manage_item h1{
-    color: #0d6efd;
+#manage_item h1 {
+
 }

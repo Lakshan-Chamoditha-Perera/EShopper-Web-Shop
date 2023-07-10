@@ -5,15 +5,15 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Web Pos</title>
+    <title>E-Shoper Online Store</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet"/>
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="style/main_page.css" rel="stylesheet">
     <link href="style/menu_section.css" rel="stylesheet">
     <link href="style/item_section.css" rel="stylesheet">
     <link href="style/manage_order.css" rel="stylesheet">
-
 </head>
 <body>
 <section class="main-section">
@@ -21,24 +21,33 @@
         <a class="navbar-brand">E-Shopper</a>
         <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
                 data-target="#navbarNav" data-toggle="collapse" type="button">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggle-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" id="home" onclick="navigate('home')"> <img
-                            alt="home"
-                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAjlJREFUSEt1lT+PTlEQxn/zbohGpdBpJCJoVBKxiS2ISisR3FeUfID9BqKnlHWXKGgUykVBJCqN2Ch8AIVKRGHtyJ1zzn3PnzmneN+Tc2fmmXnmOXNEALUfsiUIWh81NquDGKD8s3jSxM5xnL2TSwVcOgUAv4zS8rke5S/v7fAA61yXH2XNHs7EREGMz4I81sO6xkeEM9H8C3t6njuLXxYhcZyXF88LABfshR6UP7xRuDB/n/olfJBjbOiG7M3neQ+yfUValpGqsM0rgauFBsxDp8xfMnANkfC5abLkTXYkMOpD0LvBMyxHFI8YFvcM0FNRI5QUYdRN4H75PXDjrE0GeeClEKzrtEa9ATwtso6xe7IWuKlLeTZfnlTNyiHutvQKC14Da0WmTfLNwT+Ey9ySt7VYVtyNelbV5HjI42HiOdzxesVz5TfCOoN8nvsxy3hLjyN8Ao74wYNyVgDdfvxEOcdSvif2Q7xRvwEnLD1x1dLHTU7ma/L9ym05nYQVoj3RXeBksk1SL8HyrMsKqubvMsipKXCrogDW0hwRjSIHxwAGG23F8qfpuK9NoNytR/9SpJ79HYBYQS9QT7JWQUlWCxApai5UXf6YJxHVldsU07SeIck5nz8xO3vpLIn9OHwy7vIKEoB79bsAGaInhG6T53LiOzxOc5pZLbavG1glYdAegDtNR32HcjF8s47uMMilYi5u5zbW2h01m5yT4j3oX9RmIDZzvz9jCxU1gQzTeUXy5jv7lZvwH45s9yLXc24rAAAAAElFTkSuQmCC"/>
+                    <a class="nav-link" id="home" onclick="navigate('home')">
+                        <img alt="icon"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAVJJREFUSEvtlTFIw1AQhr+rFhTETSwIbtLFwdFRR2epb+ji4Ca4iEgRBcEiRegudHApkhRnR1cHZxHcBHVwE0FFyInakqZN85LULmLGy3/f995xIcKAHxkwn/iCoo7zwfb3gbJUqMtznMPFE6zqCK+UgKkm9J5RDjmRN5vELljQYXJsoswEYMIteY7YFy9KYhGoYFgH5kIhyhUuxyDaSxItMFoEFi1juMCRenKB0SVg2Tbj5vszHDkPy4bfwOg8sBYT3orVcOSys6dbYHQWZQMhk0igeAxR5VRu2vuCgoJOI5QQsongfvgdjwoNuWuVfEFBJ8iwA4ylhLfaXvAo05Cnr4IvWNEywmSf8J925QFX9oICowdA7pcEj7iyGxS0k43WUokc6dq8Xmv6FwWd1w8bY18j+hcE1tLoFpBvq13jSDVxJvAlp1p8e5P9l2lnRCY+ARovaRki1mWIAAAAAElFTkSuQmCC"/>
                         Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick=navigate('manage_customer')>Customer</a>
+                    <a class="nav-link" onclick=navigate('manage_customer')>
+                        <img alt="icon"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAX5JREFUSEvFlM8rBGEYxz/POGg3cnFScpKjHCg3pThxkP2ZIznIWVwVLlISKcXJGuPg4MTfID/KkRB/AJEfMY92tdrZnZ3ZZnbz3t553+fzeb/vzDNCjYfUmE9lgph2IIwgtOQOJDygHGDKtd8B/QUx7cFgIod1DgXWMOXCS+ItGNIoEZYQomUgT9jMYslnOYm3IKldKFOe12CwQkauggkSOgDEPQU2JpacBBV0AtM+CVbJyGUwQUwjGCwCDa4A5Zkoc+zIezBBtiqh3cCkC0AR1tmTs+BfUb4yre18MZrrA0UxeMTAYlduwveBH8Fn3b/RaiYY1kbqGURoQ2h1edEvwD1wi80xlmTnJcM9QUx7MUgDkYoCKK8o21hyXry/VJDUfpRUReDiTTYbWHJa+NgpSGkz3ywgGIEE8IHNTOF1OQVxHUPoCwjPlx1iylF+4hQkdBloCiVQ7tiX+XKCTaAulADeMOXv/1WcYCsk/LfclHH3BFWhOyH/2MlVSvMDy9JeGbP8YcMAAAAASUVORK5CYII="/>
+                        Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" onclick=navigate('manage_item')>Item</a>
+                    <a class="nav-link" onclick=navigate('manage_item')>
+                        <img alt="icon"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAYpJREFUSEvF1L0vQ2EUx/HvITWQxmAXqckuiMQ/INJguLeLSAQxeEtMSkzFYBAMkmqM9N4mQvRvaOh/YPCymr0lIo7oy1Bu63kS5a7nd8/nObnnPkKdH6lzf6oDrnYCs0C45iGUB97Y40RugnLVAUfjCBGjCZVrfNk0B1ztApaMmpdD72yRkauv71RO4GrKqmm1sCeT5dIfA79y/Mom/7Smju4iNFsNpDzhy0Ltj1yuOrqK0GEFwC2erJsBrk4DPVaAcokvB2aAo8MIQ4VwK/Mk5TkQG9MWXtkp1c7x5MwMiGk/ykQhLCRIy10gMKoRQsRLtRSeXJgBxXtouRB+J0lG8oGAq31A8adqZIOj7/dR8JpOaJgntktNT/EkGwjENIoSLR1kkYw8mk3wmXJ0HyGEksOXw0DA0SmEXuAFT+aCMrWu6zWg3WiTlDt8SdgBjs4gdBsBkMeTpB3g6igwaAQoWXw5tQNiOoAybgQIh6QlZweMaBtNhR1v/RFpYIVjubcDfuxqFqj7df0Bi2BrGTlDYPEAAAAASUVORK5CYII="/>
+                        Item</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  onclick=navigate('manage_order')>Orders</a>
+                    <a class="nav-link" onclick=navigate('manage_order')>
+                        <img alt="icon"
+                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAATFJREFUSEvd1C9Pw0AYx/Hv02SgkGjsEt7AEhQChUKMG8ERgl+CWcjE1BQGSQhmWbJ2ZmIeh+A9oBCIGgTYe0hDtnVJ213/JWSVl7vnc8+v7SPU/EjN9dkmwOhTZXEpnwTSj+qtIqoSgBBfeuvA4vodPUM5LdnNDF/myUBb9/EYFgYUyy5dRvKTDESrHe2jHBRClFcCeV6cTf5M23qChykECAMm8pENXOke39wjeLkQ5Z1A1uJN/9HOtYtwmAuwPDKVt/iZdMBoC7jOAYQ0uWMg1g240QZfPCA0sPSYSpgDW27NnkVGow5aKHMCmVUPXGgTy61TYV8S49w8TY1eAkfATiZUGHC6fvqmzR1EZ/+6OAZe8GW8LJe2HvNcgdUoj0cRn8ClIqq9gxLvwS2i/wz8AtLgVhn0Hh8NAAAAAElFTkSuQmCC"/>
+                        Orders</a>
                 </li>
             </ul>
         </div>
@@ -47,7 +56,7 @@
 <section id="menu-section">
     <div class="left_container">
         <div id="title">EShopper
-            <p></p>
+            <p style="font-size: 20px;letter-spacing: 14px ">Go Farther With Online - buying</p>
         </div>
         <div>
             <img alt="shop" src="assets/images/shop.png">
@@ -198,7 +207,7 @@
     <hr style="color: white; border: 1px solid black; width: 100%">
     <div class="container" id="order_container">
         <div id="orders_left_container">
-            <h1>New Order</h1>
+            <h1 style="color: #FFA41B; padding-left: 38px">New Order</h1>
             <form>
                 <div class="form-group">
                     <label for="txt_order_id">Order ID</label>
@@ -208,9 +217,6 @@
                 <div class="form-group">
                     <label for="cmbCustomers">Customers</label>
                     <select class="form-control" id="cmbCustomers">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -223,15 +229,12 @@
             <img alt="image" src="assets/images/ordernow.png">
         </div>
         <div id="orders_right_container">
-            <h5>Date : <span>&nbsp; 2023/07/01</span></h5>
+            <h5>Date : <span id="date">2023-07-01</span></h5>
             <div id="right_container_top">
                 <form>
                     <div class="form-group">
                         <label for="cmbItem">Item</label>
                         <select class="form-control" id="cmbItem">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -248,7 +251,6 @@
                         <label for="i_qtyOnHand">Qty on hand</label>
                         <h4 class="form-control" id="i_qtyOnHand"
                             type="text">-</h4>
-
                     </div>
 
                 </form>
@@ -282,7 +284,7 @@
                 </table>
             </div>
             <div class="btns">
-                <h2 id="total">total: <span id="total_price">10000.00</span></h2>
+                <h2 id="total">Total:Rs&nbsp;<span id="total_price">0.00</span></h2>
                 <button class="btn btn-primary" id="btn_place_order">Place Order</button>
             </div>
         </div>
@@ -290,7 +292,10 @@
 </section>
 
 <script src="assets/jquery/jquery-3.6.4.min.js"></script>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
 <script src="dto/Customer.js" type="module"></script>
 <script src="dto/Item.js" type="module"></script>
 <script src="controller/MainFormController.js"></script>
@@ -300,9 +305,14 @@
 <script src="model/CustomerModel.js" type="module"></script>
 <script src="model/ItemModel.js" type="module"></script>
 <script src="model/OrderModel.js" type="module"></script>
-<!--hello-->
 <script>
     navigate("home");
+    let currentDate = new Date();
+    let year = currentDate.getFullYear();
+    let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    let day = String(currentDate.getDate()).padStart(2, '0');
+    let formattedDate = `${year}-${month}-${day}`;
+    document.getElementById('date').textContent = formattedDate;
 </script>
 </body>
 </html>

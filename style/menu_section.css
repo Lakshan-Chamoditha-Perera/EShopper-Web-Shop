@@ -18,10 +18,10 @@ body {
     justify-content: space-around;
     margin: 0 0 10vh 0;
 
-    /*background: url("../assets/images/Screenshot from 2023-07-06 12-12-57.png");*/
-    /*background-repeat: round;*/
-    /*background-blend-mode: darken;*/
-    /*background-attachment: fixed;*/
+    background: url("../assets/images/img.png");
+    background-repeat: round;
+    background-blend-mode: darken;
+    background-attachment: fixed;
     /*background-image: ;*/
 }
 
@@ -108,7 +108,11 @@ body {
     border-radius: 32px;
 }
 #manage_customer{
-    background-color: #ECF2FF;
+    background: url("../assets/images/img1.png");
+    background-repeat: round;
+    background-blend-mode: darken;
+    background-attachment: fixed;
+    /*background-color: #ECF2FF;*/
 }
 
 .container {
@@ -120,7 +124,7 @@ body {
 }
 
 .title {
-    padding: 10px;
+    padding: 10px 10px 10px 84px;
     /*border: 2px solid black;*/
     font-size: 50px;
     color: black;
@@ -139,7 +143,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    box-shadow: 0 0 17px rgba(0, 99, 1717, 0.5);
+    box-shadow: 0 0 17px rgba(0, 0, 0, 0.5);
     background-color: white;
 }
 
@@ -169,9 +173,11 @@ body {
 }
 
 .right_sub_container {
-    box-shadow: 0 0 17px rgba(0, 99, 1717, 0.5);
+    padding: 0 10px;
+
+    box-shadow: 0 0 17px rgba(0, 0, 0, 0.5);
     background-color: white;
-    padding: 0;
+
     border-radius: 24px;
     font-size: 20px;
     align-self: center;
@@ -183,8 +189,8 @@ body {
 }
 
 table {
-    border: 2px solid black;
-    padding: 10px;
+    /*border: 2px solid black;*/
+    margin: 14px 0;
 }
 
 .btn_div {
