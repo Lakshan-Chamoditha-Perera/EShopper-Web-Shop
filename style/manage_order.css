@@ -1,6 +1,10 @@
 #manage_order {
     /*border: 2px solid black;*/
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+    background: url("../assets/images/img2.png");
+    background-repeat: round;
+    background-blend-mode: darken;
+    background-attachment: fixed;
 
 }
 
@@ -8,6 +12,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
 }
 
 #orders_left_container {
@@ -22,7 +27,7 @@
 #orders_right_container {
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
     /*border: 2px solid black;*/
-
+    padding: 0 31px;
     border-radius: 32px;
     width: 65%;
     display: flex;

@@ -159,6 +159,7 @@ $('#btn_place_order').on('click', () => {
             _total: parseFloat(document.getElementById('total_price').textContent),
             _itemList: cartItems
         };
+        console.log(order)
         let flag = save_order(order);
         alert(flag ? "Order Placed! " : "Error: Something went wrong!");
     } else {
