@@ -94,10 +94,20 @@ $(document).ready(function () {
 $('#btn_update_customer').on('click', (e) => {
     e.preventDefault();
     if (validate()) {
-        let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
-        let isUpdate = update_customer(customer);
-        alert(isUpdate ? 'Customer updated' : 'Customer not exists!');
-        loadTable();
+        let customer = {
+            id: $('#txt_customer_id').val(),
+            name: $('#txt_customer_name').val(),
+            address: $('#txt_customer_address').val(),
+            salary: $('#txt_customer_salary').val()
+        }
+        let promise = update_customer(customer);
+        promise.then((isUpdate) => {
+            alert(isUpdate ? "Customer updated!" : "Customer not found!");
+        }).catch((error) => {
+            console.error(error.message);
+            alert("An error occurred while updating the customer.");
+        })
+        // loadTable();
     }
 });
 $('#btn_delete_customer').on('click', (e) => {

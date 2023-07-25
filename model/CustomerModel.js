@@ -24,7 +24,7 @@ export function save_customer(customer) {
 }
 
 export function update_customer(customer) {
-    let index = customerList.findIndex(c => c.id === customer.id);
+   /* let index = customerList.findIndex(c => c.id === customer.id);
     if (index === -1) {
         // Customer does not exist in the list
         return false;
@@ -34,7 +34,24 @@ export function update_customer(customer) {
         customerList[index].address = customer.address;
         customerList[index].salary = customer.salary;
         return true;
-    }
+    }*/
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", "http://localhost:8080/E_Shopper_API_war_exploded/customer");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                resolve(true);
+            } else {
+                reject(new Error("Failed to update customer."));
+            }
+        };
+        xhr.onerror = function () {
+            reject(new Error("Network error occurred."));
+        };
+        xhr.send(JSON.stringify(customer));
+    });
 }
 
 export function view_customer(customer) {
