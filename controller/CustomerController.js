@@ -60,10 +60,16 @@ const loadTable = function loadTable() {
 $('#btn_save_customer').on('click', (e) => {
     e.preventDefault();
     if (validate()) {
-        let customer = new Customer($('#txt_customer_id').val(), $('#txt_customer_name').val(), $('#txt_customer_address').val(), $('#txt_customer_salary').val());
+        let customer = {
+            id: $('#txt_customer_id').val(),
+            name: $('#txt_customer_name').val(),
+            address: $('#txt_customer_address').val(),
+            salary: $('#txt_customer_salary').val()
+        }
+
         let isSave = save_customer(customer);
         alert(isSave ? 'Customer saved' : 'Customer exists');
-        loadTable();
+        // loadTable();
     }
 });
 
@@ -94,18 +100,27 @@ $('#btn_update_customer').on('click', (e) => {
         loadTable();
     }
 });
-
-/*delete customer*/
 $('#btn_delete_customer').on('click', (e) => {
     e.preventDefault();
     if (validate()) {
-        let customer = new Customer();
-        customer.id = $('#txt_customer_id').val();
-        let isUpdate = delete_customer(customer);
-        alert(isUpdate ? 'Customer deleted! ' : 'Customer not exists!');
-        loadTable();
+        let customer = {
+            id: $('#txt_customer_id').val(),
+            name: $('#txt_customer_name').val(),
+            address: $('#txt_customer_address').val(),
+            salary: $('#txt_customer_salary').val()
+        };
+
+        let promise = delete_customer(customer);
+        promise.then((isDeleted) => {
+            alert(isDeleted ? "Customer deleted!" : "Customer not found!");
+        })
+            .catch((error) => {
+                console.error(error.message);
+                alert("An error occurred while deleting the customer.");
+            });
     }
 });
+
 
 /*search customer*/
 $('#search_customer').on('keypress', function (event) {
