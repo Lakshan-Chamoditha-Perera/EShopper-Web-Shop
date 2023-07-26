@@ -106,19 +106,19 @@ $('#item_update').on('click', (e) => {
             price: $('#item_price').val(),
             qty: $('#item_qty').val()
         }
-        let promise = update_item(item);
+          let promise = update_item(item);
         promise.then((isUpdated) => {
             alert(isUpdated ? "Item updated!" : "Item not found!");
-        })
-            .catch((error) => {
-                console.error(error.message);
-                alert("An error occurred while deleting the item.");
-            });
+        }).catch((error) => {
+            alert("An error occurred while updating the item.");
+        });
+
     }
 
     // alert(isUpdate ? 'Item updated' : 'Item does not exist!');
     // loadTable();
 });
+
 
 
 /*delete*/

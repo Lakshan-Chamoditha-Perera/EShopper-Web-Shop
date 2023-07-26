@@ -114,7 +114,7 @@ $('#btn_update_customer').on('click', (e) => {
         }).catch((error) => {
             console.error(error.message);
             alert("An error occurred while updating the customer.");
-        })
+        });
         // loadTable();
     }
 });

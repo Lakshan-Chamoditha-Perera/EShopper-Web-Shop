@@ -86,11 +86,30 @@ export function delete_item(item) {
 
 
 export function view_item(item) {
-    let index = itemList.findIndex(i => i.code === item.code);
+    /*let index = itemList.findIndex(i => i.code === item.code);
     if (index !== -1) {
         // Item exists in the list & return the item
         return itemList[index];
     }
     // Item does not exist in the list
-    return null;
+    return null;*/
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `http://localhost:8080/E_Shopper_API_war_exploded/item?id=${item.code}`);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                // Parse the JSON response to get the item data
+                const itemData = JSON.parse(xhr.responseText);
+                resolve(itemData);
+            } else {
+                reject(new Error("Item not found."));
+            }
+        };
+
+        xhr.onerror = function () {
+            reject(new Error("Network error occurred."));
+        };
+        xhr.send();
+    });
 }
