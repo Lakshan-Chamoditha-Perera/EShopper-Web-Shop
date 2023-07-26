@@ -1,11 +1,28 @@
-import {customerList, itemList} from "../db/database.js";
+import {itemList} from "../db/database.js";
 
 export function save_item(item) {
-    if (!itemList.some(i => i.code === item.code)) {
-        itemList.push(item);
-        return true;
-    }
-    return false;
+    /* if (!itemList.some(i => i.code === item.code)) {
+         itemList.push(item);
+         return true;
+     }
+     return false;*/
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8080/E_Shopper_API_war_exploded/item");
+        xhr.setRequestHeader("Content-Type", "application/json");
+        console.log("Item Model: " + JSON.stringify(item))
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                resolve = true;
+            } else {
+                reject(new Error("Failed to save item."));
+            }
+        };
+        xhr.onerror = function () {
+            reject(new Error("Network error occurred."));
+        };
+        xhr.send(JSON.stringify(item));
+    })
 }
 
 

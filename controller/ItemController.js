@@ -69,11 +69,22 @@ const loadTable = function loadTable() {
 $('#item_save').on('click', (e) => {
     e.preventDefault();
     if (item_validate()) {
-        let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
-        let isSave = save_item(item);
-        alert(isSave ? 'item saved' : 'item exists');
-        loadTable();
+        let item = {
+            code: $('#item_code').val(),
+            description: $('#item_description').val(),
+            price: $('#item_price').val(),
+            qty: $('#item_qty').val()
+        };
+console.log(item)
+        let promise = save_item(item);
+        promise.then((isSaved) => {
+            alert(isSaved ? "Item saved!" : "Item already exists!");
+        })
+            .catch((error) => {
+                alert("An error occurred while saving the item.");
+            });
     }
+    // loadTable();
 });
 
 /*update*/
