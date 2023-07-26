@@ -67,11 +67,18 @@ $('#btn_save_customer').on('click', (e) => {
             salary: $('#txt_customer_salary').val()
         }
 
-        let isSave = save_customer(customer);
-        alert(isSave ? 'Customer saved' : 'Customer exists');
+        let promise = save_customer(customer);
         // loadTable();
+        promise.then((isSaved) => {
+            alert(isSaved ? "Customer saved!" : "Customer exists!");
+        })
+            .catch((error) => {
+                console.error(error.message);
+                alert("An error occurred while deleting the customer.");
+            });
     }
 });
+
 
 /*update customer*/
 $(document).ready(function () {
@@ -100,6 +107,7 @@ $('#btn_update_customer').on('click', (e) => {
             address: $('#txt_customer_address').val(),
             salary: $('#txt_customer_salary').val()
         }
+        console.log(customer)
         let promise = update_customer(customer);
         promise.then((isUpdate) => {
             alert(isUpdate ? "Customer updated!" : "Customer not found!");
@@ -135,14 +143,25 @@ $('#btn_delete_customer').on('click', (e) => {
 /*search customer*/
 $('#search_customer').on('keypress', function (event) {
     if (event.which === 13 && validateId()) {
-        let customer = new Customer();
-        customer.id = $(this).val();
-        customer = view_customer(customer);
+        let customer = {
+            id: $(this).val(),
+        };
+        const promise = view_customer(customer);
+        promise.then((customer) => {
+            alert("Customer exits!");
+            let tableBody = document.getElementById("customer_table_body");
+            tableBody.innerHTML = "";
+            console.log(customer)
+            appendData(customer);
+        }).catch((e) => {
+            alert("customer not Exits!");
+        })
+        /*
         if (customer != null) {
             let tableBody = document.getElementById("customer_table_body");
             tableBody.innerHTML = "";
             appendData(customer);
-        } else alert("Customer record does not exists!")
+        } else alert("Customer record does not exists!");*/
     }
 });
 
