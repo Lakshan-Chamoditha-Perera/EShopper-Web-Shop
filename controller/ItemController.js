@@ -60,6 +60,7 @@ let appendData = (item) => {
 
     tableBody.appendChild(row);
 }
+
 /*save*/
 const loadTable = function loadTable() {
     let tableBody = document.getElementById("item_table_body");
@@ -110,11 +111,21 @@ $('#item_update').on('click', (e) => {
 $('#item_delete').on('click', (e) => {
     e.preventDefault();
     if (item_validate()) {
-        let item = new Item();
-        item.code = $('#item_code').val();
-        let isUpdate = delete_item(item);
-        alert(isUpdate ? 'Item deleted! ' : 'Item does not exist!');
-        loadTable();
+        let item = {
+            code: $('#item_code').val()
+        };
+
+
+        let promise = delete_item(item);
+        promise.then((isDeleted) => {
+            alert(isDeleted ? "Item deleted!" : "Item not found!");
+        })
+            .catch((error) => {
+                console.error(error.message);
+                alert("An error occurred while deleting the item");
+            });
+        // alert(isUpdate ? 'Item deleted! ' : 'Item does not exist!');
+        // loadTable();
     }
 });
 
