@@ -27,7 +27,7 @@ export function save_item(item) {
 
 
 export function update_item(item) {
-    let index = itemList.findIndex(i => i.code === item.code);
+    /*let index = itemList.findIndex(i => i.code === item.code);
     if (index === -1) {
         // item does not exist in the list
         return false;
@@ -37,7 +37,24 @@ export function update_item(item) {
         itemList[index].price = item.price;
         itemList[index].qtyOnHand = item.qtyOnHand;
         return true;
-    }
+    }*/
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", "http://localhost:8080/E_Shopper_API_war_exploded/item");
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                resolve(true);
+            } else {
+                reject(new Error("Failed to update item."));
+            }
+        };
+        xhr.onerror = function () {
+            reject(new Error("Network error occurred."));
+        };
+        xhr.send(JSON.stringify(item));
+    });
 }
 
 

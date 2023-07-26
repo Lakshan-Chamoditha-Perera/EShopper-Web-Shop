@@ -1,4 +1,4 @@
-import {Customer} from "../dto/Customer.js" ;
+import {Customer} from "../dto/Customer.js";
 import {customerList} from "../db/database.js";
 import {delete_customer, save_customer, update_customer, view_customer} from "../model/CustomerModel.js";
 

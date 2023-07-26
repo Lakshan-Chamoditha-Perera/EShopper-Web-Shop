@@ -76,7 +76,7 @@ $('#item_save').on('click', (e) => {
             price: $('#item_price').val(),
             qty: $('#item_qty').val()
         };
-console.log(item)
+        console.log(item)
         let promise = save_item(item);
         promise.then((isSaved) => {
             alert(isSaved ? "Item saved!" : "Item already exists!");
@@ -100,12 +100,26 @@ $(document).ready(function () {
 $('#item_update').on('click', (e) => {
     e.preventDefault();
     if (item_validate()) {
-        let item = new Item($('#item_code').val(), $('#item_description').val(), $('#item_price').val(), $('#item_qty').val());
-        let isUpdate = update_item(item);
-        alert(isUpdate ? 'Item updated' : 'Item does not exist!');
-        loadTable();
+        let item = {
+            code: $('#item_code').val(),
+            description: $('#item_description').val(),
+            price: $('#item_price').val(),
+            qty: $('#item_qty').val()
+        }
+        let promise = update_item(item);
+        promise.then((isUpdated) => {
+            alert(isUpdated ? "Item updated!" : "Item not found!");
+        })
+            .catch((error) => {
+                console.error(error.message);
+                alert("An error occurred while deleting the item.");
+            });
     }
+
+    // alert(isUpdate ? 'Item updated' : 'Item does not exist!');
+    // loadTable();
 });
+
 
 /*delete*/
 $('#item_delete').on('click', (e) => {
