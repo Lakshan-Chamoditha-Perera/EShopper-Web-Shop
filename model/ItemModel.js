@@ -93,9 +93,10 @@ export function view_item(item) {
     }
     // Item does not exist in the list
     return null;*/
+    console.log("item model: "+JSON.stringify(item))
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", `http://localhost:8080/E_Shopper_API_war_exploded/item?id=${item.code}`);
+        xhr.open("GET", `http://localhost:8080/E_Shopper_API_war_exploded/item?code=${item.code}`);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = function () {
             if (xhr.status === 200) {

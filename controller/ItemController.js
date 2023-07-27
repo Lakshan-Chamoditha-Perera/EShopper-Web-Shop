@@ -112,9 +112,7 @@ $('#item_update').on('click', (e) => {
         }).catch((error) => {
             alert("An error occurred while updating the item.");
         });
-
     }
-
     // alert(isUpdate ? 'Item updated' : 'Item does not exist!');
     // loadTable();
 });
@@ -146,15 +144,32 @@ $('#item_delete').on('click', (e) => {
 /*search item*/
 $('#search_item').on('keypress', function (event) {
     if (event.which === 13 && validateId()) {
-        let item = new Item();
+        console.log("search item");
+        let item={
+            code:$('#search_item').val()
+        }
+        let promise = view_item(item);
+        promise.then((item) => {
+           alert("Item exists!");
+                let tableBody = document.getElementById("item_table_body");
+                tableBody.innerHTML = "";
+                appendData(item);
+                console.log("reveived data"+item);
+            } ).catch((error) => {
+                alert(error.toString());
+            })
+        }
+
+
+        /* let item = new Item();
         item.code = $(this).val();
         item = view_item(item);
         if (item != null) {
             let tableBody = document.getElementById("item_table_body");
             tableBody.innerHTML = "";
             appendData(item);
-        } else alert("Item record does not exist!")
-    }
+        } else alert("Item record does not exist!")*/
+
 });
 
 function validateId() {
