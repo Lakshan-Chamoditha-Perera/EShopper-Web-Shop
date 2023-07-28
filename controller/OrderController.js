@@ -144,20 +144,25 @@ $('#btn_place_order').on('click', () => {
     if ($('#txt_order_id').val() != null && JSON.parse($('#cmbCustomers').val()) != null && rows.length !== 0) {
         rows.each(function () {
             let cells = $(this).find('td');
-            let item = {
-                _code: cells.eq(0).text(),
-                _description: cells.eq(1).text(),
-                _qtyOnHand: parseInt(cells.eq(2).text()),
-                _price: parseFloat(cells.eq(3).text())
+            let orderDetailsDto = {
+                itemDto: {
+                    code: cells.eq(0).text(),
+                    description: cells.eq(1).text(),
+                    qty: parseInt(cells.eq(2).text()),
+                    price: parseFloat(cells.eq(3).text())
+                },
+                ordersDto:null,
+                qty: $('#qty').val(),
+                id: 0
             };
-            cartItems.push(item);
+            // cartItems.push(item);
+        cartItems.push(orderDetailsDto);
         });
         let order = {
-            _id: $('#txt_order_id').val(),
-            _customer: JSON.parse($('#cmbCustomers').val()),
-            _date: $('#date').text(),
-            _total: parseFloat(document.getElementById('total_price').textContent),
-            _itemList: cartItems
+            id: $('#txt_order_id').val(),
+            customerDto: JSON.parse($('#cmbCustomers').val()), //    date: $('#date').text(),
+            //    total: parseFloat(document.getElementById('total_price').textContent),
+            orderDetailsDtoList: cartItems
         };
         console.log(order)
         let flag = save_order(order);

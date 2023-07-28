@@ -3,7 +3,6 @@
  * 5/7/2023
  */
 
-import {Item} from "../dto/Item.js";
 import {delete_item, save_item, update_item, view_item} from "../model/ItemModel.js";
 import {itemList} from "../db/database.js";
 
@@ -106,7 +105,7 @@ $('#item_update').on('click', (e) => {
             price: $('#item_price').val(),
             qty: $('#item_qty').val()
         }
-          let promise = update_item(item);
+        let promise = update_item(item);
         promise.then((isUpdated) => {
             alert(isUpdated ? "Item updated!" : "Item not found!");
         }).catch((error) => {
@@ -116,7 +115,6 @@ $('#item_update').on('click', (e) => {
     // alert(isUpdate ? 'Item updated' : 'Item does not exist!');
     // loadTable();
 });
-
 
 
 /*delete*/
@@ -145,30 +143,30 @@ $('#item_delete').on('click', (e) => {
 $('#search_item').on('keypress', function (event) {
     if (event.which === 13 && validateId()) {
         console.log("search item");
-        let item={
-            code:$('#search_item').val()
+        let item = {
+            code: $('#search_item').val()
         }
         let promise = view_item(item);
         promise.then((item) => {
-           alert("Item exists!");
-                let tableBody = document.getElementById("item_table_body");
-                tableBody.innerHTML = "";
-                appendData(item);
-                console.log("reveived data"+item);
-            } ).catch((error) => {
-                alert(error.toString());
-            })
-        }
-
-
-        /* let item = new Item();
-        item.code = $(this).val();
-        item = view_item(item);
-        if (item != null) {
+            alert("Item exists!");
             let tableBody = document.getElementById("item_table_body");
             tableBody.innerHTML = "";
             appendData(item);
-        } else alert("Item record does not exist!")*/
+            console.log("reveived data" + item);
+        }).catch((error) => {
+            alert(error.toString());
+        })
+    }
+
+
+    /* let item = new Item();
+    item.code = $(this).val();
+    item = view_item(item);
+    if (item != null) {
+        let tableBody = document.getElementById("item_table_body");
+        tableBody.innerHTML = "";
+        appendData(item);
+    } else alert("Item record does not exist!")*/
 
 });
 
